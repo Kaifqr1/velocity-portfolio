@@ -18,6 +18,7 @@ const items = [
 
 export function Gallery() {
   const [active, setActive] = useState<number | null>(null);
+  const activeItem = active === null ? null : items[active];
 
   useEffect(() => {
     if (active === null) return;
@@ -51,11 +52,11 @@ export function Gallery() {
         ))}
       </div>
 
-      {active !== null && (
+      {activeItem && (
         <div
           role="dialog"
           aria-modal="true"
-          aria-label={items[active].label}
+          aria-label={activeItem.label}
           onClick={() => setActive(null)}
           className="fixed inset-0 z-[60] flex items-center justify-center bg-background/95 p-6 backdrop-blur-sm"
         >
@@ -68,8 +69,8 @@ export function Gallery() {
             <X className="size-5" />
           </button>
           <img
-            src={items[active].src}
-            alt={items[active].alt}
+            src={activeItem.src}
+            alt={activeItem.alt}
             className="max-h-[85vh] w-auto max-w-full border border-border"
             onClick={(e) => e.stopPropagation()}
           />
