@@ -3,24 +3,19 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const nav = [
+  { label: "Home", href: "#top" },
   {
     label: "Services",
     href: "#services",
     children: [
-      { label: "Performance Engineering", href: "#services" },
-      { label: "Aerodynamics", href: "#specs" },
-      { label: "Race Operations", href: "#services" },
+      { label: "Signature Experience", href: "#services" },
+      { label: "Consultation", href: "#services" },
+      { label: "Premium Care", href: "#services" },
+      { label: "Membership", href: "#services" },
     ],
   },
-  {
-    label: "Portfolio",
-    href: "#portfolio",
-    children: [
-      { label: "Case Studies", href: "#portfolio" },
-      { label: "Programmes", href: "#services" },
-    ],
-  },
-  { label: "Heritage", href: "#heritage" },
+  { label: "Gallery", href: "#gallery" },
+  { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -40,13 +35,18 @@ export function Header() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-500",
         scrolled
-          ? "border-b border-border bg-background/85 backdrop-blur-xl"
+          ? "border-b border-border bg-background/85 py-0 backdrop-blur-xl"
           : "border-b border-transparent",
       )}
     >
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-10">
-        <a href="#top" className="font-display text-lg font-bold tracking-[0.28em] uppercase">
-          Kess<span className="text-gold">.</span>
+      <div
+        className={cn(
+          "mx-auto flex max-w-7xl items-center justify-between px-6 transition-all duration-500 lg:px-10",
+          scrolled ? "h-16" : "h-20",
+        )}
+      >
+        <a href="#top" className="font-display text-lg font-bold uppercase tracking-[0.28em]">
+          Aurum<span className="text-gold">.</span>
         </a>
 
         <nav className="hidden items-center gap-10 lg:flex">
@@ -78,7 +78,7 @@ export function Header() {
             href="#contact"
             className="border border-gold px-6 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-gold transition-colors hover:bg-gold hover:text-primary-foreground"
           >
-            Get Started
+            Book Now
           </a>
         </nav>
 
@@ -110,7 +110,7 @@ export function Header() {
               onClick={() => setOpen(false)}
               className="mt-6 border border-gold px-6 py-4 text-center text-xs font-semibold uppercase tracking-[0.2em] text-gold"
             >
-              Get Started
+              Book Now
             </a>
           </nav>
         </div>
