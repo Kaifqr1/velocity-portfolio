@@ -77,14 +77,14 @@ export function ContactForm() {
           <label htmlFor="name" className="eyebrow">
             Name
           </label>
-          <input id="name" placeholder="Alexandra Reuter" {...field("name")} />
+          <input id="name" placeholder="Sadik Khan" {...field("name")} />
           {errors.name && <p className="mt-2 text-sm text-destructive">{errors.name}</p>}
         </div>
         <div>
           <label htmlFor="email" className="eyebrow">
             Email
           </label>
-          <input id="email" type="email" placeholder="you@company.com" {...field("email")} />
+          <input id="email" type="email" placeholder="your@company.com" {...field("email")} />
           {errors.email && <p className="mt-2 text-sm text-destructive">{errors.email}</p>}
         </div>
       </div>
@@ -94,7 +94,7 @@ export function ContactForm() {
           <label htmlFor="phone" className="eyebrow">
             Phone
           </label>
-          <input id="phone" type="tel" placeholder="+1 (555) 000-0000" {...field("phone")} />
+          <input id="phone" type="tel" placeholder="+91 XXXXXXX459" {...field("phone")} />
           {errors.phone && <p className="mt-2 text-sm text-destructive">{errors.phone}</p>}
         </div>
         <div>
