@@ -1,417 +1,378 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
-  ArrowUpRight,
-  Gauge,
-  Wind,
-  CircuitBoard,
-  Wrench,
+  Sparkles,
+  Gem,
+  HeartHandshake,
+  CalendarCheck,
+  ShieldCheck,
+  Clock,
+  Award,
+  Phone,
+  Mail,
+  MapPin,
   Instagram,
-  Linkedin,
-  Twitter,
+  Facebook,
+  Star,
+  ArrowRight,
 } from "lucide-react";
-
-import heroImg from "@/assets/hero.jpg";
-import brakesImg from "@/assets/spec-brakes.jpg";
-import engineImg from "@/assets/spec-engine.jpg";
-import heritage1 from "@/assets/heritage-1.jpg";
-import heritage2 from "@/assets/heritage-2.jpg";
-import heritage3 from "@/assets/heritage-3.jpg";
-
+import heroImage from "@/assets/hero.jpg";
 import { Header } from "@/components/site/Header";
 import { Reveal } from "@/components/site/Reveal";
 import { ContactForm } from "@/components/site/ContactForm";
+import { Testimonials } from "@/components/site/Testimonials";
+import { Gallery } from "@/components/site/Gallery";
+import { Counter } from "@/components/site/Counter";
+import { toast } from "sonner";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Kess Motorsport — Performance Engineering & Race Programmes" },
+      { title: "Aurum — Premium Service Experience Since 2009" },
       {
         name: "description",
         content:
-          "Kess Motorsport engineers championship-winning race programmes: performance engineering, aerodynamics and race operations for premium marques.",
+          "Aurum delivers a premium, appointment-only service experience. Explore our signature offerings, gallery and client stories, then book in minutes.",
       },
-      { property: "og:title", content: "Kess Motorsport — Built to Perform" },
+      { property: "og:title", content: "Aurum — Premium Service Experience Since 2009" },
       {
         property: "og:description",
         content:
-          "Six decades of race engineering. Programmes, aerodynamics and operations for premium marques.",
+          "A luxury service studio built on craft, discretion and detail. Browse the gallery and book your appointment.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: Index,
+  component: Home,
 });
 
 const services = [
   {
-    icon: Gauge,
-    title: "Performance Engineering",
-    desc: "Powertrain calibration, thermal management and lap-time simulation built around your homologation window.",
-    detail: "Dyno-validated gains of 4–9% across GT3, LMP2 and hypercar platforms.",
+    icon: Sparkles,
+    name: "Signature Experience",
+    desc: "Our flagship offering — tailored end to end around your brief, delivered by senior specialists.",
+    detail: "Typically 90 minutes · From $180",
   },
   {
-    icon: Wind,
-    title: "Aerodynamics",
-    desc: "CFD-first development with wind-tunnel correlation and track-verified balance mapping.",
-    detail: "Full-scale correlation within 1.8% of tunnel prediction.",
+    icon: Gem,
+    name: "Premium Care",
+    desc: "Ongoing refinement and maintenance so the result you loved on day one still holds months later.",
+    detail: "Monthly or quarterly · From $95",
   },
   {
-    icon: CircuitBoard,
-    title: "Vehicle Electronics",
-    desc: "Control units, telemetry architecture and driver interfaces engineered for endurance reliability.",
-    detail: "Zero control-system retirements across 42 race weekends.",
+    icon: HeartHandshake,
+    name: "Consultation",
+    desc: "A focused session to map out options, timelines and budget before you commit to anything.",
+    detail: "45 minutes · Complimentary",
   },
   {
-    icon: Wrench,
-    title: "Race Operations",
-    desc: "Trackside crews, logistics and strategy desks that run a full championship season end to end.",
-    detail: "Average pit stop 2.31s across the 2025 endurance calendar.",
+    icon: CalendarCheck,
+    name: "Membership",
+    desc: "Priority scheduling, member pricing and first access to seasonal releases and private events.",
+    detail: "Annual · From $1,200",
   },
 ];
 
-const specs = [
+const differentiators = [
   {
-    img: brakesImg,
-    eyebrow: "Braking",
-    title: "Carbon-ceramic deceleration",
-    desc: "Six-piston monobloc calipers with directional venting hold pedal feel consistent from lap one to the final stint. Temperature is mapped corner by corner and fed to the strategy desk in real time.",
-    stat: "1.9 g",
-    statLabel: "Sustained braking",
+    icon: Award,
+    title: "Uncompromising Quality",
+    desc: "Every detail is reviewed twice before it ever reaches you.",
   },
   {
-    img: engineImg,
-    eyebrow: "Powertrain",
-    title: "Engineered for the long run",
-    desc: "Every powerplant is stripped, measured and rebuilt to our own tolerance sheet. Combustion mapping is tuned for fuel-flow regulations without surrendering peak drivability.",
-    stat: "641 hp",
-    statLabel: "Homologated output",
-  },
-];
-
-const timeline = [
-  {
-    year: "1968",
-    title: "The first works entry",
-    img: heritage1,
-    desc: "A single-car programme run from a rented workshop takes a class win on debut and sets the standard for everything after it.",
-    achievement: "Class win, first season",
+    icon: ShieldCheck,
+    title: "Fifteen Years of Craft",
+    desc: "A senior-only team, trained in-house, with nothing outsourced.",
   },
   {
-    year: "2009",
-    title: "Endurance dominance",
-    img: heritage2,
-    desc: "Full endurance operations built in-house — strategy, telemetry, pit crew — deliver three consecutive manufacturer titles.",
-    achievement: "3 consecutive titles",
-  },
-  {
-    year: "2026",
-    title: "The electrified era",
-    img: heritage3,
-    desc: "Hybrid and full-electric prototypes developed alongside our combustion programmes, sharing one aerodynamic philosophy.",
-    achievement: "2 hypercar programmes live",
+    icon: Clock,
+    title: "Your Time, Respected",
+    desc: "On schedule, every appointment, or your next visit is on us.",
   },
 ];
 
-const cases = [
-  {
-    client: "Vantor Racing",
-    desc: "Full-season GT3 programme rebuilt from chassis up in 11 months.",
-    result: "+1.4s per lap",
-  },
-  {
-    client: "Aurel Hypercar",
-    desc: "Aerodynamic package and control electronics for a debut hypercar entry.",
-    result: "P2 on debut",
-  },
-  {
-    client: "Northline Endurance",
-    desc: "Trackside operations, strategy desk and logistics across three continents.",
-    result: "98.6% finish rate",
-  },
+const stats = [
+  { value: 500, suffix: "+", label: "Happy Clients" },
+  { value: 15, suffix: " Yrs", label: "Experience" },
+  { value: 98, suffix: "%", label: "Satisfaction" },
+  { value: 24, suffix: "h", label: "Response Time" },
 ];
 
-function Index() {
+const hours = [
+  ["Monday – Friday", "9:00 – 19:00"],
+  ["Saturday", "10:00 – 17:00"],
+  ["Sunday", "By appointment"],
+];
+
+function Home() {
   return (
     <div id="top" className="min-h-screen bg-background">
       <Header />
 
-      {/* Hero */}
-      <section className="relative flex min-h-[100svh] items-end overflow-hidden">
-        <img
-          src={heroImg}
-          alt="Silver GT racing car lit in a dark studio"
-          width={1920}
-          height={1088}
-          className="absolute inset-0 size-full object-cover"
-        />
-        <div
-          className="absolute inset-0"
-          style={{ background: "var(--gradient-veil)" }}
-          aria-hidden="true"
-        />
-        <div className="relative mx-auto w-full max-w-7xl px-6 pb-24 pt-32 lg:px-10 lg:pb-32">
-          <Reveal>
-            <p className="eyebrow">Since 1968 · Stuttgart</p>
-            <h1 className="mt-6 max-w-4xl text-[clamp(2.75rem,7vw,4.5rem)] font-bold">
-              Built to Perform.
-              <br />
-              <span className="text-gold-gradient">Engineered to Impress.</span>
-            </h1>
-            <p className="mt-8 max-w-xl text-base text-muted-foreground sm:text-lg">
-              We design, build and run race programmes for marques that measure success in
-              thousandths of a second.
-            </p>
-            <div className="mt-12 flex flex-wrap items-center gap-8">
-              <a
-                href="#services"
-                className="inline-flex min-h-12 items-center gap-3 bg-gold px-10 text-xs font-semibold uppercase tracking-[0.25em] text-primary-foreground transition-all hover:shadow-[var(--shadow-gold)]"
-              >
-                Explore details <ArrowUpRight className="size-4" />
-              </a>
-              <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">
-                58 years · 214 podiums
+      <main>
+        {/* HERO */}
+        <section className="relative flex min-h-[100svh] items-center overflow-hidden">
+          <img
+            src={heroImage}
+            alt="Warmly lit interior of the Aurum studio"
+            width={1920}
+            height={1080}
+            className="absolute inset-0 size-full object-cover"
+          />
+          <div className="absolute inset-0 bg-background/70" />
+          <div
+            className="absolute inset-0"
+            style={{ backgroundImage: "var(--gradient-veil)" }}
+            aria-hidden
+          />
+          <div className="relative mx-auto w-full max-w-7xl px-6 py-32 lg:px-10">
+            <Reveal>
+              <p className="eyebrow">Since 2009 &middot; New York City</p>
+              <h1 className="mt-6 font-display text-6xl font-extrabold uppercase leading-[0.95] tracking-tight sm:text-7xl lg:text-8xl">
+                Aurum
+              </h1>
+              <p className="mt-6 max-w-xl text-lg text-muted-foreground sm:text-xl">
+                A premium service experience, designed around you — crafted with patience,
+                delivered with precision.
               </p>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Services */}
-      <section id="services" className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-40">
-        <Reveal className="max-w-2xl">
-          <p className="eyebrow">Capabilities</p>
-          <h2 className="mt-6 text-[clamp(2rem,4vw,3rem)] font-bold">
-            Four disciplines. One programme.
-          </h2>
-        </Reveal>
-        <div className="mt-16 grid gap-px border border-border bg-border sm:grid-cols-2">
-          {services.map((s, i) => (
-            <Reveal key={s.title} delay={i * 80}>
-              <article className="group h-full bg-surface p-10 transition-all duration-500 hover:-translate-y-1 hover:bg-surface-elevated hover:shadow-[var(--shadow-lift)] lg:p-14">
-                <s.icon className="size-7 text-gold" strokeWidth={1.25} />
-                <h3 className="mt-8 text-2xl font-semibold">{s.title}</h3>
-                <p className="mt-4 text-muted-foreground">{s.desc}</p>
-                <div className="grid grid-rows-[0fr] transition-all duration-500 group-hover:grid-rows-[1fr]">
-                  <div className="overflow-hidden">
-                    <p className="pt-6 text-sm text-gold">{s.detail}</p>
-                  </div>
-                </div>
+              <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center">
                 <a
                   href="#contact"
-                  className="mt-8 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground transition-colors hover:text-gold"
+                  className="flex min-h-12 items-center justify-center bg-gold px-10 text-xs font-semibold uppercase tracking-[0.25em] text-primary-foreground transition-all hover:shadow-[var(--shadow-gold)]"
                 >
-                  Learn more <ArrowUpRight className="size-4" />
+                  Book Now
                 </a>
-              </article>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      {/* Specs */}
-      <section id="specs" className="border-y border-border bg-surface/40">
-        <div className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-40">
-          <Reveal className="max-w-2xl">
-            <p className="eyebrow">Component breakdown</p>
-            <h2 className="mt-6 text-[clamp(2rem,4vw,3rem)] font-bold">
-              Every part accounted for.
-            </h2>
-          </Reveal>
-          <div className="mt-20 space-y-24 lg:space-y-32">
-            {specs.map((spec, i) => (
-              <Reveal
-                key={spec.title}
-                className={`grid items-center gap-12 lg:grid-cols-2 lg:gap-20 ${
-                  i % 2 === 1 ? "lg:[&>figure]:order-2" : ""
-                }`}
-              >
-                <figure className="overflow-hidden">
-                  <img
-                    src={spec.img}
-                    alt={spec.title}
-                    loading="lazy"
-                    width={1200}
-                    height={900}
-                    className="aspect-4/3 w-full object-cover transition-transform duration-[1200ms] hover:scale-105"
-                  />
-                </figure>
-                <div>
-                  <p className="eyebrow">{spec.eyebrow}</p>
-                  <h3 className="mt-5 text-[clamp(1.5rem,3vw,2rem)] font-semibold">{spec.title}</h3>
-                  <p className="mt-6 text-muted-foreground">{spec.desc}</p>
-                  <div className="mt-10 border-l border-gold pl-6">
-                    <p className="font-display text-4xl font-bold text-gold-gradient">
-                      {spec.stat}
-                    </p>
-                    <p className="mt-1 text-xs uppercase tracking-[0.25em] text-muted-foreground">
-                      {spec.statLabel}
-                    </p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Heritage timeline */}
-      <section id="heritage" className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-40">
-        <Reveal className="max-w-2xl">
-          <p className="eyebrow">Heritage</p>
-          <h2 className="mt-6 text-[clamp(2rem,4vw,3rem)] font-bold">Six decades of milestones.</h2>
-        </Reveal>
-
-        <div className="relative mt-20">
-          <div
-            className="absolute left-0 top-0 hidden h-full w-px bg-border lg:left-1/2 lg:block"
-            aria-hidden="true"
-          />
-          <ol className="space-y-20 lg:space-y-32">
-            {timeline.map((item, i) => (
-              <Reveal as="li" key={item.year} className="relative">
-                <div
-                  className={`grid items-center gap-10 lg:grid-cols-2 lg:gap-20 ${
-                    i % 2 === 1 ? "lg:[&>figure]:order-2" : ""
-                  }`}
+                <a
+                  href="#gallery"
+                  className="flex min-h-12 items-center justify-center gap-2 px-2 text-xs font-semibold uppercase tracking-[0.25em] text-foreground transition-colors hover:text-gold"
                 >
-                  <figure className="overflow-hidden">
-                    <img
-                      src={item.img}
-                      alt={item.title}
-                      loading="lazy"
-                      width={1000}
-                      height={700}
-                      className="aspect-3/2 w-full object-cover"
-                    />
-                  </figure>
-                  <div className={i % 2 === 1 ? "lg:pr-16 lg:text-right" : "lg:pl-16"}>
-                    <p className="font-display text-5xl font-bold text-gold-gradient">
-                      {item.year}
-                    </p>
-                    <h3 className="mt-4 text-2xl font-semibold">{item.title}</h3>
-                    <p className="mt-4 text-muted-foreground">{item.desc}</p>
-                    <p className="mt-6 text-xs uppercase tracking-[0.25em] text-gold">
-                      {item.achievement}
-                    </p>
-                  </div>
+                  View Gallery <ArrowRight className="size-4" />
+                </a>
+              </div>
+              <div className="mt-14 flex items-center gap-3 text-sm text-muted-foreground">
+                <span className="flex gap-1 text-gold" aria-label="Rated 5 out of 5">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className="size-4 fill-current" />
+                  ))}
+                </span>
+                Rated 4.9/5 across 500+ client reviews
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* SERVICES */}
+        <section id="services" className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-36">
+          <Reveal className="max-w-2xl">
+            <p className="eyebrow">What We Offer</p>
+            <h2 className="mt-5 font-display text-4xl font-bold sm:text-5xl">
+              Services built around a single standard
+            </h2>
+            <p className="mt-5 text-muted-foreground">
+              Four ways to work with us — each one delivered by the same senior team, to the same
+              exacting brief.
+            </p>
+          </Reveal>
+
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {services.map((service, i) => (
+              <Reveal key={service.name} delay={i * 90} as="article">
+                <div className="group flex h-full flex-col border border-border bg-surface p-8 transition-all duration-500 hover:-translate-y-1 hover:border-gold/50 hover:shadow-[var(--shadow-lift)]">
+                  <service.icon className="size-7 text-gold" />
+                  <h3 className="mt-8 font-display text-xl font-bold">{service.name}</h3>
+                  <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">
+                    {service.desc}
+                  </p>
+                  <p className="mt-6 max-h-0 overflow-hidden text-xs uppercase tracking-[0.2em] text-gold opacity-0 transition-all duration-500 group-hover:max-h-12 group-hover:opacity-100">
+                    {service.detail}
+                  </p>
+                  <a
+                    href="#contact"
+                    className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-foreground transition-colors hover:text-gold"
+                  >
+                    Learn More <ArrowRight className="size-3.5" />
+                  </a>
                 </div>
               </Reveal>
             ))}
-          </ol>
-        </div>
-      </section>
+          </div>
+        </section>
 
-      {/* Case studies */}
-      <section id="portfolio" className="border-y border-border bg-surface/40">
-        <div className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-40">
-          <Reveal className="max-w-2xl">
-            <p className="eyebrow">Selected work</p>
-            <h2 className="mt-6 text-[clamp(2rem,4vw,3rem)] font-bold">Results, not renderings.</h2>
+        {/* GALLERY */}
+        <section id="gallery" className="border-y border-border bg-surface/40">
+          <div className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-36">
+            <Reveal className="max-w-2xl">
+              <p className="eyebrow">Featured Work</p>
+              <h2 className="mt-5 font-display text-4xl font-bold sm:text-5xl">
+                A selection from the archive
+              </h2>
+              <p className="mt-5 text-muted-foreground">
+                Recent work, spaces and details. Select any image to view it full size.
+              </p>
+            </Reveal>
+            <Reveal className="mt-16">
+              <Gallery />
+            </Reveal>
+          </div>
+        </section>
+
+        {/* TESTIMONIALS */}
+        <section className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-36">
+          <Reveal className="text-center">
+            <p className="eyebrow">Client Stories</p>
           </Reveal>
-          <div className="mt-16 grid gap-8 lg:grid-cols-3">
-            {cases.map((c, i) => (
-              <Reveal key={c.client} delay={i * 90}>
-                <article className="flex h-full flex-col justify-between border border-border bg-background p-10 transition-all duration-500 hover:-translate-y-1 hover:border-gold hover:shadow-[var(--shadow-lift)]">
-                  <div>
-                    <h3 className="text-xl font-semibold">{c.client}</h3>
-                    <p className="mt-4 text-sm text-muted-foreground">{c.desc}</p>
+          <Reveal className="mt-14">
+            <Testimonials />
+          </Reveal>
+        </section>
+
+        {/* ABOUT */}
+        <section id="about" className="border-y border-border bg-surface/40">
+          <div className="mx-auto grid max-w-7xl gap-16 px-6 py-28 lg:grid-cols-2 lg:px-10 lg:py-36">
+            <Reveal>
+              <p className="eyebrow">Est. 2009</p>
+              <h2 className="mt-5 font-display text-4xl font-bold sm:text-5xl">
+                Why clients stay with us
+              </h2>
+              <p className="mt-6 text-muted-foreground">
+                We started in a two-room studio with a simple rule: never hand over work we
+                wouldn&apos;t be proud to sign. Fifteen years later the team is larger, the rule is
+                identical, and most of our clients still arrive by referral.
+              </p>
+              <a
+                href="#contact"
+                className="mt-10 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-gold transition-colors hover:text-foreground"
+              >
+                Meet the Team <ArrowRight className="size-3.5" />
+              </a>
+            </Reveal>
+
+            <div className="space-y-8">
+              {differentiators.map((item, i) => (
+                <Reveal key={item.title} delay={i * 100}>
+                  <div className="flex gap-6 border-b border-border pb-8">
+                    <item.icon className="mt-1 size-6 shrink-0 text-gold" />
+                    <div>
+                      <h3 className="font-display text-lg font-bold">{item.title}</h3>
+                      <p className="mt-2 text-sm text-muted-foreground">{item.desc}</p>
+                    </div>
                   </div>
-                  <div className="mt-10">
-                    <p className="font-display text-3xl font-bold text-gold-gradient">{c.result}</p>
-                    <a
-                      href="#contact"
-                      className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground transition-colors hover:text-gold"
-                    >
-                      Read case study <ArrowUpRight className="size-4" />
-                    </a>
-                  </div>
-                </article>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* STATS */}
+        <section className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
+          <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+            {stats.map((stat, i) => (
+              <Reveal key={stat.label} delay={i * 80} className="text-center">
+                <p className="font-display text-5xl font-extrabold text-gold-gradient sm:text-6xl">
+                  <Counter to={stat.value} suffix={stat.suffix} />
+                </p>
+                <p className="mt-4 text-xs uppercase tracking-[0.3em] text-muted-foreground">
+                  {stat.label}
+                </p>
               </Reveal>
             ))}
           </div>
-          <Reveal className="mt-20 flex flex-wrap items-center justify-center gap-x-16 gap-y-8 opacity-60">
-            {["VANTOR", "AUREL", "NORTHLINE", "MERIDIAN", "KAHLBERG"].map((logo) => (
-              <span
-                key={logo}
-                className="font-display text-sm font-semibold tracking-[0.35em] text-silver"
-              >
-                {logo}
-              </span>
-            ))}
-          </Reveal>
-        </div>
-      </section>
+        </section>
 
-      {/* Contact */}
-      <section id="contact" className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-40">
-        <div className="grid gap-16 lg:grid-cols-2 lg:gap-24">
-          <Reveal>
-            <p className="eyebrow">Start a programme</p>
-            <h2 className="mt-6 text-[clamp(2rem,4vw,3rem)] font-bold">
-              Tell us what you want to win.
+        {/* CTA */}
+        <section className="border-y border-border bg-surface">
+          <Reveal className="mx-auto max-w-3xl px-6 py-28 text-center lg:py-32">
+            <h2 className="font-display text-4xl font-bold sm:text-5xl">
+              Ready to experience Aurum?
             </h2>
-            <p className="mt-6 max-w-md text-muted-foreground">
-              Every engagement begins with a technical review. Share the brief and we'll come back
-              with a feasibility outline within one working day.
+            <p className="mt-5 text-muted-foreground">
+              Free consultation. No deposit required to hold your first appointment.
             </p>
-            <div className="hairline mt-12" />
-            <p className="mt-8 text-sm text-muted-foreground">
-              Kess Motorsport GmbH · Weissach, Germany
-              <br />
-              programmes@kessmotorsport.com
-            </p>
+            <a
+              href="#contact"
+              className="mt-10 inline-flex min-h-12 items-center justify-center bg-gold px-12 text-xs font-semibold uppercase tracking-[0.25em] text-primary-foreground transition-all hover:shadow-[var(--shadow-gold)]"
+            >
+              Book Appointment
+            </a>
           </Reveal>
-          <Reveal delay={120}>
-            <ContactForm />
-          </Reveal>
-        </div>
-      </section>
+        </section>
 
-      {/* Footer */}
-      <footer className="border-t border-border bg-surface/50">
+        {/* CONTACT */}
+        <section id="contact" className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-36">
+          <div className="grid gap-16 lg:grid-cols-[1.2fr_0.8fr]">
+            <Reveal>
+              <p className="eyebrow">Get In Touch</p>
+              <h2 className="mt-5 font-display text-4xl font-bold sm:text-5xl">
+                Book your appointment
+              </h2>
+              <p className="mt-5 max-w-lg text-muted-foreground">
+                Tell us what you need and a member of the team will reply within one working day.
+              </p>
+              <div className="mt-12">
+                <ContactForm />
+              </div>
+            </Reveal>
+
+            <Reveal delay={120}>
+              <div className="border border-border bg-surface p-8">
+                <h3 className="font-display text-lg font-bold">Studio</h3>
+                <ul className="mt-6 space-y-5 text-sm text-muted-foreground">
+                  <li className="flex gap-4">
+                    <Phone className="size-4 shrink-0 text-gold" />
+                    <a href="tel:+12125550142" className="hover:text-gold">
+                      +1 (212) 555-0142
+                    </a>
+                  </li>
+                  <li className="flex gap-4">
+                    <Mail className="size-4 shrink-0 text-gold" />
+                    <a href="mailto:studio@aurum.example" className="hover:text-gold">
+                      studio@aurum.example
+                    </a>
+                  </li>
+                  <li className="flex gap-4">
+                    <MapPin className="size-4 shrink-0 text-gold" />
+                    <span>
+                      118 Greene Street
+                      <br />
+                      SoHo, New York, NY 10012
+                    </span>
+                  </li>
+                </ul>
+
+                <div className="my-8 hairline" />
+
+                <h3 className="font-display text-lg font-bold">Hours</h3>
+                <ul className="mt-6 space-y-3 text-sm">
+                  {hours.map(([day, time]) => (
+                    <li key={day} className="flex justify-between gap-4">
+                      <span className="text-muted-foreground">{day}</span>
+                      <span className="text-foreground">{time}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      </main>
+
+      {/* FOOTER */}
+      <footer className="border-t border-border bg-surface/60">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
-          <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-12 lg:grid-cols-4">
             <div>
               <p className="font-display text-lg font-bold uppercase tracking-[0.28em]">
-                Kess<span className="text-gold">.</span>
+                Aurum<span className="text-gold">.</span>
               </p>
-              <p className="mt-4 max-w-xs text-sm text-muted-foreground">
-                Race engineering, aerodynamics and operations since 1968.
+              <p className="mt-5 max-w-xs text-sm text-muted-foreground">
+                A premium service studio in SoHo, New York. Est. 2009.
               </p>
-            </div>
-            <div>
-              <p className="eyebrow">Company</p>
-              <ul className="mt-5 space-y-3 text-sm text-muted-foreground">
-                {["Services", "Portfolio", "Heritage", "Contact"].map((l) => (
-                  <li key={l}>
-                    <a href={`#${l.toLowerCase()}`} className="transition-colors hover:text-gold">
-                      {l}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <p className="eyebrow">Legal</p>
-              <ul className="mt-5 space-y-3 text-sm text-muted-foreground">
-                {["Privacy", "Terms", "Imprint"].map((l) => (
-                  <li key={l}>
-                    <a href="#top" className="transition-colors hover:text-gold">
-                      {l}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <p className="eyebrow">Follow</p>
-              <div className="mt-5 flex gap-4">
-                {[Twitter, Instagram, Linkedin].map((Icon, i) => (
+              <div className="mt-6 flex gap-3">
+                {[Instagram, Facebook].map((Icon, i) => (
                   <a
                     key={i}
                     href="#top"
-                    aria-label="Social profile"
+                    aria-label={i === 0 ? "Instagram" : "Facebook"}
                     className="flex size-12 items-center justify-center border border-border text-muted-foreground transition-colors hover:border-gold hover:text-gold"
                   >
                     <Icon className="size-4" />
@@ -419,13 +380,87 @@ function Index() {
                 ))}
               </div>
             </div>
+
+            <div>
+              <p className="eyebrow">Explore</p>
+              <ul className="mt-6 space-y-3 text-sm text-muted-foreground">
+                {["Services", "Gallery", "About", "Contact"].map((l) => (
+                  <li key={l}>
+                    <a href={`#${l.toLowerCase()}`} className="hover:text-gold">
+                      {l}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <p className="eyebrow">Hours</p>
+              <ul className="mt-6 space-y-3 text-sm text-muted-foreground">
+                {hours.map(([day, time]) => (
+                  <li key={day}>
+                    {day} · {time}
+                  </li>
+                ))}
+                <li>+1 (212) 555-0142</li>
+              </ul>
+            </div>
+
+            <div>
+              <p className="eyebrow">Newsletter</p>
+              <p className="mt-6 text-sm text-muted-foreground">
+                Seasonal releases and private events. No noise.
+              </p>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const input = e.currentTarget.elements.namedItem(
+                    "newsletter",
+                  ) as HTMLInputElement | null;
+                  const value = input?.value.trim() ?? "";
+                  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) {
+                    toast.error("Enter a valid email address.");
+                    return;
+                  }
+                  toast.success("You're on the list.");
+                  e.currentTarget.reset();
+                }}
+                className="mt-5 flex flex-col gap-3 sm:flex-row"
+              >
+                <label htmlFor="newsletter" className="sr-only">
+                  Email address
+                </label>
+                <input
+                  id="newsletter"
+                  name="newsletter"
+                  type="email"
+                  placeholder="you@company.com"
+                  className="min-h-12 flex-1 border border-border bg-transparent px-4 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-gold"
+                />
+                <button
+                  type="submit"
+                  className="min-h-12 border border-gold px-6 text-xs font-semibold uppercase tracking-[0.2em] text-gold transition-colors hover:bg-gold hover:text-primary-foreground"
+                >
+                  Join
+                </button>
+              </form>
+            </div>
           </div>
-          <div className="mt-16 flex flex-col gap-4 border-t border-border pt-8 text-xs uppercase tracking-[0.2em] text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-            <p>© 2026 Kess Motorsport GmbH</p>
-            <p>Weissach · Le Mans · Suzuka</p>
+
+          <div className="mt-16 flex flex-col gap-3 border-t border-border pt-8 text-xs text-muted-foreground sm:flex-row sm:justify-between">
+            <p>© {new Date().getFullYear()} Aurum Studio. All rights reserved.</p>
+            <p>Template by Aurum — customizable for any service business.</p>
           </div>
         </div>
       </footer>
+
+      {/* STICKY MOBILE CTA */}
+      <a
+        href="#contact"
+        className="fixed inset-x-4 bottom-4 z-40 flex min-h-12 items-center justify-center bg-gold text-xs font-semibold uppercase tracking-[0.25em] text-primary-foreground shadow-[var(--shadow-gold)] lg:hidden"
+      >
+        Book Now
+      </a>
     </div>
   );
 }
