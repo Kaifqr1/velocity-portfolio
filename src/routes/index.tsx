@@ -320,7 +320,7 @@ function Home() {
                   <li className="flex gap-4">
                     <Phone className="size-4 shrink-0 text-gold" />
                     <a href="tel:+12125550142" className="hover:text-gold">
-                      +1 (212) 555-0142
+                      +91 7XXXXXX890
                     </a>
                   </li>
                   <li className="flex gap-4">
@@ -332,9 +332,9 @@ function Home() {
                   <li className="flex gap-4">
                     <MapPin className="size-4 shrink-0 text-gold" />
                     <span>
-                      118 Greene Street
+                      Govandi
                       <br />
-                      SoHo, New York, NY 10012
+                      Mumbai-400043
                     </span>
                   </li>
                 </ul>
