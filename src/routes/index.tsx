@@ -327,14 +327,25 @@ function Home() {
                 <ul className="mt-6 space-y-5 text-sm text-muted-foreground">
                   <li className="flex gap-4">
                     <Phone className="size-4 shrink-0 text-gold" />
-                    <a href="tel:+12125550142" className="hover:text-gold">
-                      +91 7XXXXXX890
+                    <a href={`tel:+${WHATSAPP_NUMBER}`} className="hover:text-gold">
+                      {CONTACT_PHONE}
                     </a>
                   </li>
                   <li className="flex gap-4">
                     <Mail className="size-4 shrink-0 text-gold" />
-                    <a href="mailto:studio@aurum.example" className="hover:text-gold">
-                      studio@aurum.example
+                    <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-gold">
+                      {CONTACT_EMAIL}
+                    </a>
+                  </li>
+                  <li className="flex gap-4">
+                    <MessageCircle className="size-4 shrink-0 text-gold" />
+                    <a
+                      href={WHATSAPP_LINK}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-gold"
+                    >
+                      WhatsApp · {CONTACT_PHONE}
                     </a>
                   </li>
                   <li className="flex gap-4">
