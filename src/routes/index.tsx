@@ -10,11 +10,19 @@ import {
   Phone,
   Mail,
   MapPin,
+  MessageCircle,
   Instagram,
   Facebook,
   Star,
   ArrowRight,
 } from "lucide-react";
+
+const WHATSAPP_NUMBER = "917039081439";
+const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+  "Hi Aurum, I'd like to book an appointment.",
+)}`;
+const CONTACT_PHONE = "+91 7039081439";
+const CONTACT_EMAIL = "kaif.qr1@gmail.com";
 import heroImage from "@/assets/hero.jpg";
 import { Header } from "@/components/site/Header";
 import { Reveal } from "@/components/site/Reveal";
