@@ -480,6 +480,17 @@ function Home() {
       >
         Book Now
       </a>
+
+      {/* FLOATING WHATSAPP BUTTON */}
+      <a
+        href={WHATSAPP_LINK}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat with us on WhatsApp"
+        className="fixed bottom-4 right-4 z-40 flex size-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_12px_30px_-8px_rgba(37,211,102,0.6)] transition-transform hover:scale-110 lg:bottom-8 lg:right-8"
+      >
+        <MessageCircle className="size-7" />
+      </a>
     </div>
   );
 }
