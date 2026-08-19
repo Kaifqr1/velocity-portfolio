@@ -10,11 +10,19 @@ import {
   Phone,
   Mail,
   MapPin,
+  MessageCircle,
   Instagram,
   Facebook,
   Star,
   ArrowRight,
 } from "lucide-react";
+
+const WHATSAPP_NUMBER = "917039081439";
+const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+  "Hi Aurum, I'd like to book an appointment.",
+)}`;
+const CONTACT_PHONE = "+91 7039081439";
+const CONTACT_EMAIL = "kaif.qr1@gmail.com";
 import heroImage from "@/assets/hero.jpg";
 import { Header } from "@/components/site/Header";
 import { Reveal } from "@/components/site/Reveal";
@@ -319,14 +327,25 @@ function Home() {
                 <ul className="mt-6 space-y-5 text-sm text-muted-foreground">
                   <li className="flex gap-4">
                     <Phone className="size-4 shrink-0 text-gold" />
-                    <a href="tel:+12125550142" className="hover:text-gold">
-                      +91 7XXXXXX890
+                    <a href={`tel:+${WHATSAPP_NUMBER}`} className="hover:text-gold">
+                      {CONTACT_PHONE}
                     </a>
                   </li>
                   <li className="flex gap-4">
                     <Mail className="size-4 shrink-0 text-gold" />
-                    <a href="mailto:studio@aurum.example" className="hover:text-gold">
-                      studio@aurum.example
+                    <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-gold">
+                      {CONTACT_EMAIL}
+                    </a>
+                  </li>
+                  <li className="flex gap-4">
+                    <MessageCircle className="size-4 shrink-0 text-gold" />
+                    <a
+                      href={WHATSAPP_LINK}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-gold"
+                    >
+                      WhatsApp · {CONTACT_PHONE}
                     </a>
                   </li>
                   <li className="flex gap-4">
@@ -402,7 +421,7 @@ function Home() {
                     {day} · {time}
                   </li>
                 ))}
-                <li>+1 (212) 555-0142</li>
+                <li>{CONTACT_PHONE}</li>
               </ul>
             </div>
 
@@ -460,6 +479,17 @@ function Home() {
         className="fixed inset-x-4 bottom-4 z-40 flex min-h-12 items-center justify-center bg-gold text-xs font-semibold uppercase tracking-[0.25em] text-primary-foreground shadow-[var(--shadow-gold)] lg:hidden"
       >
         Book Now
+      </a>
+
+      {/* FLOATING WHATSAPP BUTTON */}
+      <a
+        href={WHATSAPP_LINK}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat with us on WhatsApp"
+        className="fixed bottom-24 right-4 z-40 flex size-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_12px_30px_-8px_rgba(37,211,102,0.6)] transition-transform hover:scale-110 lg:bottom-8 lg:right-8"
+      >
+        <MessageCircle className="size-7" />
       </a>
     </div>
   );
