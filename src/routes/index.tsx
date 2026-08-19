@@ -421,7 +421,7 @@ function Home() {
                     {day} · {time}
                   </li>
                 ))}
-                <li>+1 (212) 555-0142</li>
+                <li>{CONTACT_PHONE}</li>
               </ul>
             </div>
 
